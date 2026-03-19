@@ -4,23 +4,19 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Reis & Irvy's — Shop</title>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
+	<title>Reis & Irvy's</title>
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Roboto:wght@400;500&display=swap"
 		rel="stylesheet">
 	<style>
 		:root {
 			--teal: #00b4c8;
-			--teal-dark: #0099aa;
-			--teal-light: #e8f8fb;
-			--pink: #e8196e;
 			--navy: #1a2d3d;
-			--white: #ffffff;
-			--bg: #f0fafc;
-			--border: #d4eef2;
-			--muted: #7a9aaa;
+			--pink: #e8196e;
 			--green: #00a878;
-			--orange: #f4833d;
+			--bg: #f3fafb;
+			--white: #ffffff;
+			--border: #daedf1;
+			--muted: #8aabb5;
 		}
 
 		* {
@@ -33,607 +29,439 @@
 			background: var(--bg);
 			color: var(--navy);
 			font-family: 'Roboto', sans-serif;
-			min-height: 100vh;
 		}
 
 		/* ── Header ── */
-		.header {
+		header {
 			background: var(--navy);
-			padding: 0 40px;
-			height: 62px;
+			height: 56px;
+			padding: 0 32px;
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
 		}
 
-		.header-logo {
-			height: 34px;
-			object-fit: contain;
+		.logo {
+			height: 28px;
 			filter: brightness(0) invert(1);
 		}
 
-		.header-logo-text {
+		.logo-text {
 			font-family: 'Oswald', sans-serif;
-			font-size: 18px;
+			font-size: 16px;
 			font-weight: 600;
 			color: #fff;
-			letter-spacing: 0.06em;
-			text-transform: uppercase;
+			letter-spacing: 0.08em;
 			display: none;
-		}
-
-		.header-right {
-			display: flex;
-			align-items: center;
-			gap: 10px;
 		}
 
 		.cart-btn {
 			display: flex;
 			align-items: center;
-			gap: 8px;
+			gap: 7px;
 			background: var(--teal);
 			color: #fff;
 			border: none;
-			padding: 8px 16px;
-			border-radius: 4px;
+			padding: 7px 14px;
+			border-radius: 3px;
 			font-family: 'Oswald', sans-serif;
-			font-size: 13px;
+			font-size: 12px;
 			font-weight: 500;
-			letter-spacing: 0.08em;
+			letter-spacing: 0.1em;
 			text-transform: uppercase;
 			cursor: pointer;
-			transition: background 0.18s;
+			transition: opacity 0.15s;
 		}
 
 		.cart-btn:hover {
-			background: var(--teal-dark);
+			opacity: 0.88;
 		}
 
-		.cart-count {
-			background: var(--pink);
-			color: #fff;
-			font-size: 10px;
-			font-weight: 700;
-			min-width: 18px;
-			height: 18px;
-			border-radius: 9px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: 0 5px;
-			opacity: 0;
-			transition: opacity 0.2s;
-		}
-
-		.cart-count.show {
-			opacity: 1;
-		}
-
-		/* ── Diet strip ── */
-		.diet-strip {
-			background: var(--teal);
-			padding: 9px 40px;
-			display: flex;
-			align-items: center;
-			gap: 20px;
-			flex-wrap: wrap;
-		}
-
-		.diet-strip-label {
-			font-family: 'Oswald', sans-serif;
-			font-size: 11px;
-			font-weight: 500;
-			letter-spacing: 0.12em;
-			text-transform: uppercase;
-			color: rgba(255, 255, 255, 0.65);
-		}
-
-		.diet-pill {
-			display: flex;
-			align-items: center;
-			gap: 6px;
-			font-size: 11px;
-			font-weight: 500;
-			color: #fff;
-			letter-spacing: 0.04em;
-		}
-
-		.diet-pill-icon {
-			width: 20px;
-			height: 20px;
-			background: rgba(255, 255, 255, 0.2);
-			border-radius: 50%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-
-		.diet-pill-icon svg {
-			width: 10px;
-			height: 10px;
+		.cart-btn svg {
+			width: 13px;
+			height: 13px;
 			stroke: #fff;
 			fill: none;
-			stroke-width: 1.8;
+			stroke-width: 2;
 			stroke-linecap: round;
 			stroke-linejoin: round;
 		}
 
-		/* ── Filter bar ── */
-		.filter-bar {
-			background: var(--white);
-			border-bottom: 2px solid var(--border);
-			padding: 14px 40px;
+		.cart-pill {
+			background: var(--pink);
+			color: #fff;
+			font-size: 10px;
+			font-weight: 700;
+			min-width: 16px;
+			height: 16px;
+			border-radius: 8px;
 			display: flex;
 			align-items: center;
-			gap: 8px;
+			justify-content: center;
+			padding: 0 4px;
+			opacity: 0;
+			transition: opacity 0.2s;
+		}
+
+		.cart-pill.show {
+			opacity: 1;
+		}
+
+		/* ── Filters ── */
+		.filters {
+			background: var(--white);
+			border-bottom: 1px solid var(--border);
+			padding: 11px 32px;
+			display: flex;
+			align-items: center;
+			gap: 6px;
 			flex-wrap: wrap;
 		}
 
-		.filter-label {
-			font-family: 'Oswald', sans-serif;
-			font-size: 11px;
+		.f-label {
+			font-size: 10px;
 			font-weight: 500;
-			letter-spacing: 0.1em;
+			letter-spacing: 0.12em;
 			text-transform: uppercase;
 			color: var(--muted);
 			margin-right: 4px;
 		}
 
-		.filter-btn {
+		.f-btn {
+			border: 1px solid var(--border);
 			background: transparent;
-			border: 1.5px solid var(--border);
 			color: var(--muted);
 			font-family: 'Oswald', sans-serif;
-			font-size: 12px;
+			font-size: 11px;
 			font-weight: 500;
-			padding: 6px 16px;
-			border-radius: 3px;
-			cursor: pointer;
-			transition: all 0.15s;
 			letter-spacing: 0.08em;
 			text-transform: uppercase;
+			padding: 5px 13px;
+			border-radius: 2px;
+			cursor: pointer;
+			transition: all 0.15s;
 		}
 
-		.filter-btn:hover {
+		.f-btn:hover {
 			border-color: var(--teal);
 			color: var(--teal);
-			background: var(--teal-light);
 		}
 
-		.filter-btn.active {
+		.f-btn.active {
 			background: var(--teal);
 			border-color: var(--teal);
 			color: #fff;
 		}
 
-		.filter-btn.active-pink {
+		.f-btn.active-pink {
 			background: var(--pink);
 			border-color: var(--pink);
 			color: #fff;
 		}
 
-		/* ── Main ── */
-		.main {
-			max-width: 1240px;
+		/* ── Page body ── */
+		.body {
+			max-width: 1180px;
 			margin: 0 auto;
-			padding: 36px 40px 60px;
+			padding: 32px 32px 64px;
 		}
 
-		/* ── Section label ── */
-		.section-label {
+		/* ── Section row ── */
+		.section-row {
 			display: flex;
-			align-items: center;
-			gap: 12px;
-			margin-bottom: 20px;
+			align-items: baseline;
+			gap: 8px;
+			margin-bottom: 16px;
 		}
 
-		.section-label h2 {
+		.section-row h2 {
 			font-family: 'Oswald', sans-serif;
-			font-size: 15px;
+			font-size: 12px;
 			font-weight: 600;
-			letter-spacing: 0.14em;
+			letter-spacing: 0.18em;
 			text-transform: uppercase;
 			color: var(--navy);
-			display: flex;
-			align-items: center;
-			gap: 8px;
 		}
 
-		.section-label h2::before {
-			content: '';
-			width: 3px;
-			height: 16px;
-			background: var(--teal);
-			border-radius: 2px;
-			display: inline-block;
-		}
-
-		.section-label .count {
-			font-family: 'Roboto', sans-serif;
+		.section-row .cnt {
 			font-size: 11px;
-			font-weight: 500;
-			color: var(--teal-dark);
-			background: var(--teal-light);
-			border: 1px solid var(--border);
-			padding: 2px 9px;
-			border-radius: 20px;
-		}
-
-		.section-label .desc {
-			font-size: 12px;
 			color: var(--muted);
-			font-weight: 300;
-			margin-left: auto;
 		}
 
-		/* ── Divider ── */
-		.section-gap {
-			margin: 44px 0 36px;
+		.divider {
 			border: none;
-			border-top: 2px solid var(--border);
+			border-top: 1px solid var(--border);
+			margin: 36px 0 28px;
 		}
 
 		/* ── Grid ── */
-		.product-grid {
+		.grid {
 			display: grid;
 			grid-template-columns: repeat(4, 1fr);
-			gap: 18px;
+			gap: 14px;
 		}
 
-		@media (max-width: 1080px) {
-			.product-grid {
+		@media (max-width: 1020px) {
+			.grid {
 				grid-template-columns: repeat(3, 1fr);
 			}
 		}
 
-		@media (max-width: 720px) {
-			.product-grid {
+		@media (max-width: 680px) {
+			.grid {
 				grid-template-columns: repeat(2, 1fr);
 			}
 		}
 
-		@media (max-width: 460px) {
-			.product-grid {
+		@media (max-width: 420px) {
+			.grid {
 				grid-template-columns: 1fr;
 			}
 		}
 
 		/* ── Card ── */
-		.product-card {
+		.card {
 			background: var(--white);
-			border-radius: 10px;
-			border: 1.5px solid var(--border);
+			border: 1px solid var(--border);
+			border-radius: 8px;
 			overflow: hidden;
-			transition: transform 0.22s, box-shadow 0.22s;
 			display: none;
 			flex-direction: column;
-			box-shadow: 0 1px 4px rgba(0, 180, 200, 0.08);
+			transition: transform 0.18s, box-shadow 0.18s;
 		}
 
-		.product-card.visible {
+		.card.visible {
 			display: flex;
 		}
 
-		.product-card:hover {
-			transform: translateY(-4px);
-			box-shadow: 0 8px 28px rgba(0, 180, 200, 0.16);
+		.card:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 6px 20px rgba(0, 180, 200, 0.12);
 		}
 
-		/* Top accent line */
-		.card-accent {
-			height: 3px;
-			background: linear-gradient(90deg, var(--teal), var(--pink));
+		/* color accent */
+		.accent {
+			height: 2px;
+			background: var(--teal);
 		}
 
-		/* Image */
-		.product-image {
+		.accent.sold {
+			background: var(--border);
+		}
+
+		/* image */
+		.img-box {
 			aspect-ratio: 1;
-			background: linear-gradient(145deg, #e8f8fb, #f0fafc);
+			background: linear-gradient(145deg, #eaf8fb 0%, #f3fafb 100%);
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			padding: 18px;
 			position: relative;
-			padding: 24px;
 			overflow: hidden;
 		}
 
-		.product-image img {
-			width: 76%;
-			height: 76%;
+		.img-box img {
+			width: 70%;
+			height: 70%;
 			object-fit: contain;
-			transition: transform 0.38s;
 			mix-blend-mode: multiply;
-			filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.10));
+			filter: drop-shadow(0 3px 7px rgba(0, 0, 0, 0.08));
+			transition: transform 0.32s;
 		}
 
-		.product-card:hover .product-image img {
-			transform: scale(1.06);
+		.card:hover .img-box img {
+			transform: scale(1.05);
 		}
 
-		/* Stock badge */
-		.stock-badge {
+		/* stock badge */
+		.stock {
 			position: absolute;
-			top: 10px;
-			right: 10px;
+			top: 9px;
+			right: 9px;
 			font-family: 'Oswald', sans-serif;
-			font-size: 10px;
+			font-size: 9px;
 			font-weight: 600;
 			letter-spacing: 0.1em;
 			text-transform: uppercase;
-			padding: 3px 9px;
-			border-radius: 3px;
+			padding: 3px 8px;
+			border-radius: 2px;
 			display: flex;
 			align-items: center;
-			gap: 4px;
-			z-index: 3;
+			gap: 3px;
 		}
 
-		.stock-badge.in-stock {
+		.stock.in {
 			background: var(--green);
 			color: #fff;
 		}
 
-		.stock-badge.out-of-stock {
-			background: rgba(232, 25, 110, 0.09);
+		.stock.out {
+			background: rgba(232, 25, 110, 0.07);
 			color: var(--pink);
-			border: 1px solid var(--pink);
+			border: 1px solid rgba(232, 25, 110, 0.25);
 		}
 
-		/* Sold overlay */
-		.sold-overlay {
-			position: absolute;
-			inset: 0;
-			background: rgba(240, 250, 252, 0.72);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			z-index: 2;
-			backdrop-filter: blur(1px);
-		}
-
-		.sold-stamp {
-			font-family: 'Oswald', sans-serif;
-			font-size: 12px;
-			font-weight: 700;
-			letter-spacing: 0.2em;
-			text-transform: uppercase;
-			color: var(--pink);
-			border: 2px solid var(--pink);
-			padding: 5px 14px;
-			border-radius: 3px;
-			transform: rotate(-10deg);
-			background: rgba(255, 255, 255, 0.85);
-		}
-
-		/* Dietary icons */
-		.dietary-icons {
-			position: absolute;
-			bottom: 8px;
-			left: 8px;
-			display: flex;
-			gap: 4px;
-			z-index: 3;
-		}
-
-		.diet-icon {
-			width: 22px;
-			height: 22px;
-			background: rgba(255, 255, 255, 0.92);
-			border: 1.5px solid var(--border);
-			border-radius: 50%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
-		}
-
-		.diet-icon svg {
-			width: 10px;
-			height: 10px;
-			stroke: var(--teal-dark);
+		.stock svg {
+			width: 7px;
+			height: 7px;
+			stroke: currentColor;
 			fill: none;
-			stroke-width: 1.8;
+			stroke-width: 2.8;
 			stroke-linecap: round;
 			stroke-linejoin: round;
 		}
 
-		/* Low stock bar */
-		.low-bar {
+		/* sold overlay */
+		.overlay {
 			position: absolute;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			height: 3px;
-			background: var(--border);
+			inset: 0;
+			background: rgba(243, 250, 251, 0.6);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 2;
 		}
 
-		.low-bar-fill {
-			height: 100%;
-			background: var(--orange);
+		.stamp {
+			font-family: 'Oswald', sans-serif;
+			font-size: 10px;
+			font-weight: 600;
+			letter-spacing: 0.2em;
+			text-transform: uppercase;
+			color: var(--pink);
+			border: 1px solid rgba(232, 25, 110, 0.4);
+			padding: 4px 11px;
+			border-radius: 2px;
+			transform: rotate(-9deg);
+			background: rgba(255, 255, 255, 0.85);
 		}
 
-		/* ── Product info ── */
-		.product-info {
-			padding: 14px 16px 16px;
-			border-top: 1.5px solid var(--border);
+		/* info */
+		.info {
+			padding: 11px 13px 13px;
+			border-top: 1px solid var(--border);
 			flex: 1;
 			display: flex;
 			flex-direction: column;
-			gap: 0;
 		}
 
-		.product-type {
+		.tag {
 			font-family: 'Oswald', sans-serif;
-			font-size: 10px;
+			font-size: 9px;
 			font-weight: 500;
 			letter-spacing: 0.14em;
 			text-transform: uppercase;
-			color: var(--teal-dark);
-			margin-bottom: 3px;
+			color: var(--teal);
+			margin-bottom: 2px;
 		}
 
-		.product-name {
+		.name {
 			font-family: 'Oswald', sans-serif;
-			font-size: 16px;
+			font-size: 14px;
 			font-weight: 600;
-			letter-spacing: 0.03em;
+			letter-spacing: 0.02em;
 			text-transform: uppercase;
 			color: var(--navy);
 			line-height: 1.2;
 			margin-bottom: 10px;
 		}
 
-		.product-row {
+		.row {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+			margin-top: auto;
 			margin-bottom: 10px;
 		}
 
-		.product-price {
+		.price {
 			font-family: 'Oswald', sans-serif;
-			font-size: 19px;
-			font-weight: 700;
+			font-size: 17px;
+			font-weight: 600;
 			color: var(--navy);
 		}
 
-		.product-sku {
-			font-size: 10px;
+		.sku {
+			font-size: 9px;
 			color: var(--muted);
-			background: var(--teal-light);
-			border: 1px solid var(--border);
-			padding: 2px 7px;
-			border-radius: 3px;
 			letter-spacing: 0.04em;
 		}
 
-		.low-note {
-			font-size: 11px;
-			font-weight: 500;
-			color: var(--orange);
-			margin-bottom: 8px;
-			display: flex;
-			align-items: center;
-			gap: 4px;
-		}
-
-		.low-note svg {
-			width: 10px;
-			height: 10px;
-			stroke: currentColor;
-			fill: none;
-			stroke-width: 2;
-			stroke-linecap: round;
-			stroke-linejoin: round;
-		}
-
-		.avail-row {
-			font-size: 11px;
-			font-weight: 500;
-			display: flex;
-			align-items: center;
-			gap: 5px;
-			margin-bottom: 12px;
-			margin-top: auto;
-		}
-
-		.avail-row svg {
-			width: 10px;
-			height: 10px;
-			stroke: currentColor;
-			fill: none;
-			stroke-width: 2.2;
-			stroke-linecap: round;
-			stroke-linejoin: round;
-		}
-
-		.avail-row.yes {
-			color: var(--green);
-		}
-
-		.avail-row.no {
-			color: var(--pink);
-		}
-
-		/* ── Buttons ── */
-		.btn-cart,
+		/* buttons */
+		.btn-add,
 		.btn-out {
 			width: 100%;
-			padding: 11px;
+			padding: 9px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			gap: 7px;
+			gap: 6px;
 			font-family: 'Oswald', sans-serif;
-			font-size: 12px;
+			font-size: 11px;
 			font-weight: 600;
 			letter-spacing: 0.1em;
 			text-transform: uppercase;
-			border-radius: 4px;
+			border-radius: 3px;
 			border: none;
 			cursor: pointer;
-			transition: all 0.18s;
+			transition: all 0.16s;
 		}
 
-		.btn-cart {
+		.btn-add {
 			background: var(--pink);
 			color: #fff;
-			box-shadow: 0 3px 10px rgba(232, 25, 110, 0.28);
 		}
 
-		.btn-cart:hover:not(:disabled) {
+		.btn-add:hover:not(:disabled) {
 			background: #cc1560;
 			transform: translateY(-1px);
-			box-shadow: 0 5px 16px rgba(232, 25, 110, 0.36);
 		}
 
-		.btn-cart.added {
+		.btn-add.added {
 			background: var(--green);
-			box-shadow: none;
 		}
 
 		.btn-out {
-			background: var(--teal-light);
+			background: var(--bg);
 			color: var(--muted);
-			border: 1.5px solid var(--border);
+			border: 1px solid var(--border);
 			cursor: not-allowed;
 		}
 
-		.btn-icon {
-			width: 12px;
-			height: 12px;
+		.btn-add svg,
+		.btn-out svg {
+			width: 11px;
+			height: 11px;
 			stroke: currentColor;
 			fill: none;
 			stroke-width: 2;
 			stroke-linecap: round;
 			stroke-linejoin: round;
-			flex-shrink: 0;
 		}
 
 		/* ── Toast ── */
 		.toast {
 			position: fixed;
-			bottom: 24px;
-			right: 24px;
+			bottom: 20px;
+			right: 20px;
 			background: var(--navy);
 			color: #fff;
-			font-family: 'Roboto', sans-serif;
-			font-size: 13px;
+			font-size: 12px;
 			font-weight: 500;
-			padding: 13px 18px;
-			border-radius: 8px;
-			border-left: 4px solid var(--teal);
+			padding: 10px 14px;
+			border-radius: 5px;
+			border-left: 3px solid var(--teal);
 			display: flex;
 			align-items: center;
-			gap: 10px;
-			min-width: 210px;
+			gap: 9px;
+			min-width: 180px;
 			opacity: 0;
-			transform: translateY(10px);
-			transition: all 0.26s ease;
+			transform: translateY(8px);
+			transition: all 0.22s ease;
 			pointer-events: none;
-			z-index: 200;
-			box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+			z-index: 99;
+			box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
 		}
 
 		.toast.show {
@@ -642,8 +470,8 @@
 		}
 
 		.toast svg {
-			width: 14px;
-			height: 14px;
+			width: 12px;
+			height: 12px;
 			stroke: var(--teal);
 			fill: none;
 			stroke-width: 2;
@@ -651,349 +479,199 @@
 			stroke-linejoin: round;
 		}
 
-		.toast-num {
+		.toast-n {
 			margin-left: auto;
 			background: var(--teal);
-			color: #fff;
-			font-size: 11px;
+			font-size: 10px;
 			font-weight: 700;
-			padding: 2px 8px;
-			border-radius: 3px;
+			padding: 1px 6px;
+			border-radius: 2px;
 		}
 	</style>
 </head>
 
 <body>
 
-	<!-- SVG sprite -->
-	<svg style="display:none">
-		<symbol id="ic-check" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round"
-			stroke-linejoin="round">
-			<polyline points="20 6 9 17 4 12" />
-		</symbol>
-		<symbol id="ic-x" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
-			stroke-linejoin="round">
-			<circle cx="12" cy="12" r="10" />
-			<line x1="15" y1="9" x2="9" y2="15" />
-			<line x1="9" y1="9" x2="15" y2="15" />
-		</symbol>
-		<symbol id="ic-cart" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
-			stroke-linejoin="round">
-			<path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
-			<line x1="3" y1="6" x2="21" y2="6" />
-			<path d="M16 10a4 4 0 01-8 0" />
-		</symbol>
-		<symbol id="ic-alert" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
-			stroke-linejoin="round">
-			<path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
-			<line x1="12" y1="9" x2="12" y2="13" />
-			<line x1="12" y1="17" x2="12.01" y2="17" />
-		</symbol>
-		<symbol id="ic-leaf" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
-			stroke-linejoin="round">
-			<path d="M17 8C8 10 5.9 16.17 3.82 19.03 3 20 2 20 2 20c0 0 2-2 3-8 1-6 8-10 15-10 0 0-1 6-3 6" />
-			<path d="M2 20l10-10" />
-		</symbol>
-		<symbol id="ic-star" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
-			stroke-linejoin="round">
-			<polygon
-				points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-		</symbol>
-		<symbol id="ic-drop" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
-			stroke-linejoin="round">
-			<path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />
-		</symbol>
-		<symbol id="ic-minus" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
-			stroke-linejoin="round">
-			<circle cx="12" cy="12" r="10" />
-			<line x1="8" y1="12" x2="16" y2="12" />
-		</symbol>
-	</svg>
-
 	<!-- Header -->
-	<header class="header">
-		<img class="header-logo" src="https://reisandirvys.com/images/ReisAndIrvys_Logo_RGB.png" alt="Reis & Irvy's"
-			onerror="this.style.display='none';document.getElementById('logoText').style.display='block'">
-		<span class="header-logo-text" id="logoText">Reis &amp; Irvy's</span>
+	<header>
+		<img class="logo" src="https://reisandirvys.com/images/ReisAndIrvys_Logo_RGB.png" alt="Reis & Irvy's"
+			onerror="this.style.display='none';document.getElementById('lt').style.display='block'">
+		<span class="logo-text" id="lt">Reis &amp; Irvy's</span>
 
-		<div class="header-right">
-			<button class="cart-btn" id="cartBtn">
-				<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-					stroke-linecap="round" stroke-linejoin="round">
-					<path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
-					<line x1="3" y1="6" x2="21" y2="6" />
-					<path d="M16 10a4 4 0 01-8 0" />
-				</svg>
-				Cart
-				<span class="cart-count" id="cartCount">0</span>
-			</button>
-		</div>
+		<button class="cart-btn">
+			<svg viewBox="0 0 24 24">
+				<path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+				<line x1="3" y1="6" x2="21" y2="6" />
+				<path d="M16 10a4 4 0 01-8 0" />
+			</svg>
+			Cart
+			<span class="cart-pill" id="pill">0</span>
+		</button>
 	</header>
 
-	<!-- Dietary legend -->
-	<div class="diet-strip">
-		<span class="diet-strip-label">Dietary Info:</span>
-		<div class="diet-pill">
-			<div class="diet-pill-icon"><svg viewBox="0 0 24 24">
-					<use href="#ic-drop" />
-				</svg></div>
-			Live Cultures
-		</div>
-		<div class="diet-pill">
-			<div class="diet-pill-icon"><svg viewBox="0 0 24 24">
-					<use href="#ic-minus" />
-				</svg></div>
-			Low Lactose
-		</div>
-		<div class="diet-pill">
-			<div class="diet-pill-icon"><svg viewBox="0 0 24 24">
-					<use href="#ic-star" />
-				</svg></div>
-			Kosher Certified
-		</div>
-		<div class="diet-pill">
-			<div class="diet-pill-icon"><svg viewBox="0 0 24 24">
-					<use href="#ic-leaf" />
-				</svg></div>
-			Gluten Free
-		</div>
-	</div>
-
 	<!-- Filters -->
-	<div class="filter-bar">
-		<span class="filter-label">Filter:</span>
-		<button class="filter-btn active" onclick="filter('all',this)">All</button>
-		<button class="filter-btn" onclick="filter('froyo',this)">Frozen Yogurt</button>
-		<button class="filter-btn" onclick="filter('gelato',this)">Gelato</button>
-		<button class="filter-btn" onclick="filter('sorbet',this)">Sorbet</button>
-		<button class="filter-btn" onclick="filter('topping',this)">Toppings</button>
-		<button class="filter-btn" onclick="filter('instock',this)">In Stock</button>
+	<div class="filters">
+		<span class="f-label">Filter</span>
+		<button class="f-btn active" onclick="go('all',this)">All</button>
+		<button class="f-btn" onclick="go('froyo',this)">Frozen Yogurt</button>
+		<button class="f-btn" onclick="go('gelato',this)">Gelato</button>
+		<button class="f-btn" onclick="go('sorbet',this)">Sorbet</button>
+		<button class="f-btn" onclick="go('topping',this)">Toppings</button>
+		<button class="f-btn" onclick="go('instock',this)">In Stock</button>
 	</div>
 
-	<!-- Main -->
-	<div class="main">
-
-		<!-- Flavors -->
-		<div class="section-label">
-			<h2>Flavors</h2>
-			<span class="count" id="flavorCount">0</span>
-			<span class="desc">Premium frozen yogurt, gelato &amp; sorbet</span>
+	<!-- Body -->
+	<div class="body">
+		<div class="section-row">
+			<h2>Flavors</h2><span class="cnt" id="fc"></span>
 		</div>
-		<div class="product-grid" id="flavorGrid"></div>
+		<div class="grid" id="fg"></div>
 
-		<hr class="section-gap">
+		<hr class="divider">
 
-		<!-- Toppings -->
-		<div class="section-label">
-			<h2>Toppings</h2>
-			<span class="count" id="toppingCount">0</span>
-			<span class="desc">Granola, candy, nuts &amp; cereals</span>
+		<div class="section-row">
+			<h2>Toppings</h2><span class="cnt" id="tc"></span>
 		</div>
-		<div class="product-grid" id="toppingGrid"></div>
-
+		<div class="grid" id="tg"></div>
 	</div>
 
 	<!-- Toast -->
 	<div class="toast" id="toast">
 		<svg viewBox="0 0 24 24">
-			<use href="#ic-cart" />
+			<path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+			<line x1="3" y1="6" x2="21" y2="6" />
+			<path d="M16 10a4 4 0 01-8 0" />
 		</svg>
-		Added to cart
-		<span class="toast-num" id="toastNum">0</span>
+		Added to cart <span class="toast-n" id="tn">0</span>
 	</div>
 
 	<script>
-		const BASE = 'https://reisandirvys.com/images/flavors/';
-		const TBASE = 'https://reisandirvys.com/images/toppings/';
-
-		const TYPE_LABEL = { froyo: 'Frozen Yogurt', gelato: 'Gelato', sorbet: 'Sorbet', topping: 'Topping' };
-
-		const DIET = {
-			gluten_free: { icon: 'ic-leaf', tip: 'Gluten Free' },
-			kosher: { icon: 'ic-star', tip: 'Kosher Certified' },
-			live_cultures: { icon: 'ic-drop', tip: 'Live Cultures' },
-			low_lactose: { icon: 'ic-minus', tip: 'Decreased Lactose' },
-		};
+		const F = 'https://reisandirvys.com/images/flavors/';
+		const T = 'https://reisandirvys.com/images/toppings/';
+		const LABEL = { froyo: 'Frozen Yogurt', gelato: 'Gelato', sorbet: 'Sorbet', topping: 'Topping' };
 
 		const flavors = [
-			{ id: 1, name: 'Classic Chocolate', sku: 'RI-F-001', price: '₱149', type: 'froyo', img: BASE + 'ClassicChocolate.png', status: 'instock', qty: 42, dietary: ['live_cultures', 'low_lactose', 'kosher'] },
-			{ id: 2, name: 'Strawberry', sku: 'RI-F-002', price: '₱149', type: 'froyo', img: BASE + 'Strawberry.png', status: 'instock', qty: 30, dietary: ['live_cultures', 'gluten_free', 'kosher'] },
-			{ id: 3, name: 'White Vanilla', sku: 'RI-F-003', price: '₱149', type: 'froyo', img: BASE + 'WhiteVanilla.png', status: 'instock', qty: 25, dietary: ['live_cultures', 'kosher'] },
-			{ id: 4, name: 'Peanut Butter', sku: 'RI-F-004', price: '₱149', type: 'froyo', img: BASE + 'PeanutButter.png', status: 'outofstock', qty: 0, dietary: ['live_cultures'] },
-			{ id: 5, name: "Cookies n' Cream", sku: 'RI-F-005', price: '₱159', type: 'froyo', img: BASE + 'CookiesnCream.png', status: 'instock', qty: 4, dietary: ['live_cultures'] },
-			{ id: 6, name: 'Salted Caramel', sku: 'RI-F-006', price: '₱159', type: 'froyo', img: BASE + 'SaltedCaramel.png', status: 'instock', qty: 18, dietary: ['live_cultures', 'kosher'] },
-			{ id: 7, name: 'Alpine Vanilla', sku: 'RI-F-007', price: '₱149', type: 'froyo', img: BASE + 'AlpineVanilla.png', status: 'outofstock', qty: 0, dietary: ['live_cultures', 'gluten_free', 'kosher'] },
-			{ id: 8, name: 'Dutch Chocolate', sku: 'RI-F-008', price: '₱149', type: 'froyo', img: BASE + 'DutchChocolate.png', status: 'instock', qty: 20, dietary: ['live_cultures'] },
-			{ id: 9, name: 'Pink Lemonade', sku: 'RI-F-009', price: '₱149', type: 'sorbet', img: BASE + 'PinkLemonade.png', status: 'instock', qty: 12, dietary: ['gluten_free', 'kosher'] },
-			{ id: 10, name: 'NY Cheesecake', sku: 'RI-F-010', price: '₱169', type: 'froyo', img: BASE + 'NYCheesecake.png', status: 'instock', qty: 9, dietary: ['live_cultures'] },
-			{ id: 11, name: 'Watermelon', sku: 'RI-F-011', price: '₱149', type: 'sorbet', img: BASE + 'Watermelon.png', status: 'outofstock', qty: 0, dietary: ['gluten_free', 'kosher'] },
-			{ id: 12, name: 'Mango Sunrise', sku: 'RI-F-012', price: '₱149', type: 'sorbet', img: BASE + 'MangoSunrise.png', status: 'instock', qty: 15, dietary: ['gluten_free', 'kosher'] },
-			{ id: 13, name: 'Chocolate Fudge', sku: 'RI-F-013', price: '₱159', type: 'froyo', img: BASE + 'ChocolateFudge.png', status: 'instock', qty: 7, dietary: ['live_cultures'] },
-			{ id: 14, name: 'Chocolate Gelato', sku: 'RI-F-014', price: '₱169', type: 'gelato', img: BASE + 'ChocolateGelato.png', status: 'instock', qty: 11, dietary: ['kosher'] },
-			{ id: 15, name: 'Vanilla Gelato', sku: 'RI-F-015', price: '₱169', type: 'gelato', img: BASE + 'VanillaGelato.png', status: 'outofstock', qty: 0, dietary: ['kosher'] },
-			{ id: 16, name: 'Cake Batter', sku: 'RI-F-016', price: '₱159', type: 'froyo', img: BASE + 'CakeBatter.png', status: 'instock', qty: 3, dietary: ['live_cultures'] },
-			{ id: 17, name: 'Pomegranate Raspberry', sku: 'RI-F-017', price: '₱149', type: 'sorbet', img: BASE + 'PomegranateRaspberry.png', status: 'instock', qty: 20, dietary: ['gluten_free', 'kosher'] },
-			{ id: 18, name: 'Pumpkin', sku: 'RI-F-018', price: '₱159', type: 'froyo', img: BASE + 'Pumpkin.png', status: 'outofstock', qty: 0, dietary: ['live_cultures', 'kosher'] },
+			{ id: 1, name: 'Classic Chocolate', sku: 'RI-F-001', price: '₱149', type: 'froyo', img: F + 'ClassicChocolate.png', s: 'instock' },
+			{ id: 2, name: 'Strawberry', sku: 'RI-F-002', price: '₱149', type: 'froyo', img: F + 'Strawberry.png', s: 'instock' },
+			{ id: 3, name: 'White Vanilla', sku: 'RI-F-003', price: '₱149', type: 'froyo', img: F + 'WhiteVanilla.png', s: 'instock' },
+			{ id: 4, name: 'Peanut Butter', sku: 'RI-F-004', price: '₱149', type: 'froyo', img: F + 'PeanutButter.png', s: 'outofstock' },
+			{ id: 5, name: "Cookies n' Cream", sku: 'RI-F-005', price: '₱159', type: 'froyo', img: F + 'CookiesnCream.png', s: 'instock' },
+			{ id: 6, name: 'Salted Caramel', sku: 'RI-F-006', price: '₱159', type: 'froyo', img: F + 'SaltedCaramel.png', s: 'instock' },
+			{ id: 7, name: 'Alpine Vanilla', sku: 'RI-F-007', price: '₱149', type: 'froyo', img: F + 'AlpineVanilla.png', s: 'outofstock' },
+			{ id: 8, name: 'Dutch Chocolate', sku: 'RI-F-008', price: '₱149', type: 'froyo', img: F + 'DutchChocolate.png', s: 'instock' },
+			{ id: 9, name: 'Pink Lemonade', sku: 'RI-F-009', price: '₱149', type: 'sorbet', img: F + 'PinkLemonade.png', s: 'instock' },
+			{ id: 10, name: 'NY Cheesecake', sku: 'RI-F-010', price: '₱169', type: 'froyo', img: F + 'NYCheesecake.png', s: 'instock' },
+			{ id: 11, name: 'Watermelon', sku: 'RI-F-011', price: '₱149', type: 'sorbet', img: F + 'Watermelon.png', s: 'outofstock' },
+			{ id: 12, name: 'Mango Sunrise', sku: 'RI-F-012', price: '₱149', type: 'sorbet', img: F + 'MangoSunrise.png', s: 'instock' },
+			{ id: 13, name: 'Chocolate Fudge', sku: 'RI-F-013', price: '₱159', type: 'froyo', img: F + 'ChocolateFudge.png', s: 'instock' },
+			{ id: 14, name: 'Chocolate Gelato', sku: 'RI-F-014', price: '₱169', type: 'gelato', img: F + 'ChocolateGelato.png', s: 'instock' },
+			{ id: 15, name: 'Vanilla Gelato', sku: 'RI-F-015', price: '₱169', type: 'gelato', img: F + 'VanillaGelato.png', s: 'outofstock' },
+			{ id: 16, name: 'Cake Batter', sku: 'RI-F-016', price: '₱159', type: 'froyo', img: F + 'CakeBatter.png', s: 'instock' },
+			{ id: 17, name: 'Pomegranate Raspberry', sku: 'RI-F-017', price: '₱149', type: 'sorbet', img: F + 'PomegranateRaspberry.png', s: 'instock' },
+			{ id: 18, name: 'Pumpkin', sku: 'RI-F-018', price: '₱159', type: 'froyo', img: F + 'Pumpkin.png', s: 'outofstock' },
 		];
 
 		const toppings = [
-			{ id: 101, name: 'Chocolate Sprinkles', sku: 'RI-T-001', price: '₱49', type: 'topping', img: TBASE + 'ChocolateSprinkles.png', status: 'instock', qty: 99 },
-			{ id: 102, name: 'Fruity Pebbles', sku: 'RI-T-002', price: '₱59', type: 'topping', img: TBASE + 'FruityPebbles.png', status: 'instock', qty: 80 },
-			{ id: 103, name: 'M&Ms', sku: 'RI-T-003', price: '₱59', type: 'topping', img: TBASE + 'M&Ms.png', status: 'outofstock', qty: 0 },
-			{ id: 104, name: 'Peanuts', sku: 'RI-T-004', price: '₱49', type: 'topping', img: TBASE + 'Peanuts.png', status: 'instock', qty: 99 },
-			{ id: 105, name: 'Rainbow Sprinkles', sku: 'RI-T-005', price: '₱49', type: 'topping', img: TBASE + 'RainbowSprinkles.png', status: 'instock', qty: 99 },
-			{ id: 106, name: "Reese's Pieces", sku: 'RI-T-006', price: '₱59', type: 'topping', img: TBASE + 'ReesesPieces.png', status: 'instock', qty: 45 },
-			{ id: 107, name: 'Granola', sku: 'RI-T-007', price: '₱49', type: 'topping', img: TBASE + 'Granola.png', status: 'outofstock', qty: 0 },
-			{ id: 108, name: "Cap'n Crunch", sku: 'RI-T-008', price: '₱59', type: 'topping', img: TBASE + 'CapNCrunch.png', status: 'instock', qty: 60 },
+			{ id: 101, name: 'Chocolate Sprinkles', sku: 'RI-T-001', price: '₱49', type: 'topping', img: T + 'ChocolateSprinkles.png', s: 'instock' },
+			{ id: 102, name: 'Fruity Pebbles', sku: 'RI-T-002', price: '₱59', type: 'topping', img: T + 'FruityPebbles.png', s: 'instock' },
+			{ id: 103, name: 'M&Ms', sku: 'RI-T-003', price: '₱59', type: 'topping', img: T + 'M&Ms.png', s: 'outofstock' },
+			{ id: 104, name: 'Peanuts', sku: 'RI-T-004', price: '₱49', type: 'topping', img: T + 'Peanuts.png', s: 'instock' },
+			{ id: 105, name: 'Rainbow Sprinkles', sku: 'RI-T-005', price: '₱49', type: 'topping', img: T + 'RainbowSprinkles.png', s: 'instock' },
+			{ id: 106, name: "Reese's Pieces", sku: 'RI-T-006', price: '₱59', type: 'topping', img: T + 'ReesesPieces.png', s: 'instock' },
+			{ id: 107, name: 'Granola', sku: 'RI-T-007', price: '₱49', type: 'topping', img: T + 'Granola.png', s: 'outofstock' },
+			{ id: 108, name: "Cap'n Crunch", sku: 'RI-T-008', price: '₱59', type: 'topping', img: T + 'CapNCrunch.png', s: 'instock' },
 		];
 
-		const LOW = 6;
-		let cartTotal = 0, toastTimer;
+		let total = 0, tmr;
 
-		function ic(id) {
-			return `<svg class="btn-icon"><use href="#${id}"/></svg>`;
-		}
-
-		function buildCard(p) {
-			const ok = p.status === 'instock';
-			const low = ok && p.qty != null && p.qty <= LOW;
-			const pct = low ? Math.round((p.qty / LOW) * 100) : 100;
-
-			const badge = ok
-				? `<div class="stock-badge in-stock">
-           <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-           In Stock
-         </div>`
-				: `<div class="stock-badge out-of-stock">
-           <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-           Sold Out
-         </div>`;
-
-			const overlay = !ok
-				? `<div class="sold-overlay"><div class="sold-stamp">Sold Out</div></div>` : '';
-
-			const diets = (p.dietary || []).map(d =>
-				`<div class="diet-icon" title="${DIET[d]?.tip || d}">
-         <svg viewBox="0 0 24 24"><use href="#${DIET[d]?.icon}"/></svg>
-       </div>`
-			).join('');
-
-			const lowNote = low
-				? `<div class="low-note">
-           <svg viewBox="0 0 24 24"><use href="#ic-alert"/></svg>
-           Only ${p.qty} left
-         </div>` : '';
-
-			const lowBar = low
-				? `<div class="low-bar"><div class="low-bar-fill" style="width:${pct}%"></div></div>` : '';
-
-			const availRow = ok
-				? `<div class="avail-row yes">
-           <svg viewBox="0 0 24 24"><use href="#ic-check"/></svg> Available
-         </div>`
-				: `<div class="avail-row no">
-           <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-           Unavailable
-         </div>`;
-
-			/* WooCommerce:
-			 * Add to Cart → /?add-to-cart={id}&quantity=1
-			 *   or POST admin-ajax.php action=woocommerce_add_to_cart
-			 * status  → wc_get_product()->get_stock_status()
-			 * qty     → wc_get_product()->get_stock_quantity()
-			 */
-			const btn = ok
-				? `<button class="btn-cart" onclick="addToCart(this,${p.id},'${p.name.replace(/'/g, "\\'")}')">
-           ${ic('ic-cart')} Add to Cart
-         </button>`
-				: `<button class="btn-out" disabled>
-           ${ic('ic-x')} Out of Stock
-         </button>`;
-
+		function mkCard(p) {
+			const ok = p.s === 'instock';
 			return `
-      <div class="product-card visible" data-type="${p.type}" data-status="${p.status}">
-        <div class="card-accent"></div>
-        <div class="product-image">
-          <img src="${p.img}" alt="${p.name}" loading="lazy"
-               onerror="this.src='https://via.placeholder.com/280x280/e8f8fb/00b4c8?text=${encodeURIComponent(p.name)}'">
-          ${badge}
-          ${overlay}
-          ${diets ? `<div class="dietary-icons">${diets}</div>` : ''}
-          ${lowBar}
+    <div class="card visible" data-type="${p.type}" data-s="${p.s}">
+      <div class="accent${ok ? '' : ' sold'}"></div>
+      <div class="img-box">
+        <img src="${p.img}" alt="${p.name}" loading="lazy"
+             onerror="this.src='https://via.placeholder.com/220/eaf8fb/00b4c8?text=${encodeURIComponent(p.name)}'">
+        <div class="stock ${ok ? 'in' : 'out'}">
+          <svg viewBox="0 0 24 24">${ok
+					? '<polyline points="20 6 9 17 4 12"/>'
+					: '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>'
+				}</svg>
+          ${ok ? 'In Stock' : 'Sold Out'}
         </div>
-        <div class="product-info">
-          <div class="product-type">${TYPE_LABEL[p.type] || p.type}</div>
-          <div class="product-name">${p.name}</div>
-          <div class="product-row">
-            <span class="product-price">${p.price}</span>
-            <span class="product-sku">${p.sku}</span>
-          </div>
-          ${lowNote}
-          ${availRow}
-          ${btn}
+        ${!ok ? '<div class="overlay"><div class="stamp">Sold Out</div></div>' : ''}
+      </div>
+      <div class="info">
+        <div class="tag">${LABEL[p.type]}</div>
+        <div class="name">${p.name}</div>
+        <div class="row">
+          <span class="price">${p.price}</span>
+          <span class="sku">${p.sku}</span>
         </div>
-      </div>`;
+        ${ok
+					? `<button class="btn-add" onclick="addCart(this,${p.id})">
+               <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+               Add to Cart
+             </button>`
+					: `<button class="btn-out" disabled>
+               <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+               Out of Stock
+             </button>`
+				}
+      </div>
+    </div>`;
 		}
 
 		function render() {
-			document.getElementById('flavorGrid').innerHTML = flavors.map(buildCard).join('');
-			document.getElementById('toppingGrid').innerHTML = toppings.map(buildCard).join('');
-			updateCounts();
+			document.getElementById('fg').innerHTML = flavors.map(mkCard).join('');
+			document.getElementById('tg').innerHTML = toppings.map(mkCard).join('');
+			recount();
 		}
 
-		function filter(f, btn) {
-			document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active', 'active-pink'));
+		function go(f, btn) {
+			document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('active', 'active-pink'));
 			btn.classList.add(f === 'instock' ? 'active-pink' : 'active');
-
-			document.querySelectorAll('.product-card').forEach(c => {
-				const show = f === 'all' ? true
-					: f === 'instock' ? c.dataset.status === 'instock'
-						: c.dataset.type === f;
+			document.querySelectorAll('.card').forEach(c => {
+				const show = f === 'all' ? true : f === 'instock' ? c.dataset.s === 'instock' : c.dataset.type === f;
 				c.classList.toggle('visible', show);
 				c.style.display = show ? '' : 'none';
 			});
-			updateCounts();
+			recount();
 		}
 
-		function updateCounts() {
+		function recount() {
 			let f = 0, t = 0;
-			document.querySelectorAll('#flavorGrid  .product-card').forEach(c => { if (c.style.display !== 'none') f++; });
-			document.querySelectorAll('#toppingGrid .product-card').forEach(c => { if (c.style.display !== 'none') t++; });
-			document.getElementById('flavorCount').textContent = f;
-			document.getElementById('toppingCount').textContent = t;
+			document.querySelectorAll('#fg .card').forEach(c => { if (c.style.display !== 'none') f++; });
+			document.querySelectorAll('#tg .card').forEach(c => { if (c.style.display !== 'none') t++; });
+			document.getElementById('fc').textContent = f;
+			document.getElementById('tc').textContent = t;
 		}
 
-		/* addToCart — swap setTimeout for real WC AJAX:
-		 * fetch(`/?add-to-cart=${id}&quantity=1`)
-		 */
-		function addToCart(btn, id, name) {
+		function addCart(btn, id) {
 			if (btn.disabled) return;
-			btn.innerHTML = `${ic('ic-cart')} Adding…`;
+			btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg> Adding…`;
 			btn.disabled = true;
-
+			/* WooCommerce: fetch(\`/?add-to-cart=\${id}&quantity=1\`) */
 			setTimeout(() => {
-				btn.innerHTML = `${ic('ic-check')} Added`;
+				btn.innerHTML = `<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Added`;
 				btn.classList.add('added');
-				cartTotal++;
-				const el = document.getElementById('cartCount');
-				el.textContent = cartTotal;
-				el.classList.add('show');
+				total++;
+				const p = document.getElementById('pill');
+				p.textContent = total; p.classList.add('show');
 				showToast();
-
 				setTimeout(() => {
-					btn.innerHTML = `${ic('ic-cart')} Add to Cart`;
-					btn.classList.remove('added');
-					btn.disabled = false;
-				}, 2500);
-			}, 500);
+					btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg> Add to Cart`;
+					btn.classList.remove('added'); btn.disabled = false;
+				}, 2200);
+			}, 450);
 		}
 
 		function showToast() {
 			const t = document.getElementById('toast');
-			document.getElementById('toastNum').textContent = cartTotal;
+			document.getElementById('tn').textContent = total;
 			t.classList.add('show');
-			clearTimeout(toastTimer);
-			toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+			clearTimeout(tmr);
+			tmr = setTimeout(() => t.classList.remove('show'), 2600);
 		}
 
 		render();
